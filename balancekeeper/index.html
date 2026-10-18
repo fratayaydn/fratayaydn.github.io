@@ -73,6 +73,17 @@
 <pre><code>brew install --cask fratayaydn/tap/balancekeeper</code></pre>
 <p>Or download <code>BalanceKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/balancekeeper/releases/latest">latest release</a>, open it and drag BalanceKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
 <p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<h2>Questions</h2>
+<h3>Why does my Mac's audio balance change by itself?</h3>
+<p>It's a long-standing macOS bug. The balance can shift when the volume keys are pressed while the Mac is busy, and it stays shifted until you notice.</p>
+<h3>How do I fix it without an app?</h3>
+<p>Open System Settings &gt; Sound, pick your output and move the Balance slider back to the middle. It can drift again later, which is what BalanceKeeper takes care of.</p>
+<h3>Does it work with AirPods and other Bluetooth headphones?</h3>
+<p>Yes. It works with the built-in speakers, wired headphones, Bluetooth and USB audio devices, and follows you when you switch between them.</p>
+<h3>Can I keep the balance off center on purpose?</h3>
+<p>Yes, you can lock it to any point. While BalanceKeeper is on, change the balance in BalanceKeeper rather than in System Settings, because macOS reports a change made there exactly like a drift.</p>
+<h3>Does it need any permissions?</h3>
+<p>No. It doesn't record audio and makes no network connections.</p>
 <h2>How it works</h2>
 <p>A small background agent asks CoreAudio to report changes to the output device and its balance, and otherwise sleeps. When the balance moves, it sets it back using the method the device supports. It uses only public macOS APIs.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/balancekeeper#readme">README</a>.</p>

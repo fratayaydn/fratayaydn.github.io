@@ -73,6 +73,17 @@
 <pre><code>brew install --cask fratayaydn/tap/nightkeys</code></pre>
 <p>Or download <code>NightKeys-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/nightkeys/releases/latest">latest release</a>, open it and drag NightKeys to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
 <p class="note">A MacBook with a backlit built-in keyboard and Apple silicon, macOS 13 Ventura or later. Needs Input Monitoring, only to notice that a key on the built-in keyboard was pressed.</p>
+<h2>Questions</h2>
+<h3>Why does my MacBook keyboard light turn on when I touch the trackpad?</h3>
+<p>macOS counts any input as activity: the trackpad, a mouse or an external keyboard all wake the keyboard light. There is no setting to choose which input turns it on.</p>
+<h3>Can I fix it in System Settings?</h3>
+<p>Not really. System Settings &gt; Keyboard lets you set how long the light stays on and whether it adjusts in low light, but not what wakes it. Turning the brightness all the way down keeps it off, but then it stays dark when you type too.</p>
+<h3>Does typing on an external keyboard light up the MacBook keyboard?</h3>
+<p>Not with NightKeys. Only the built-in keyboard wakes the light, so typing on an external keyboard leaves it off.</p>
+<h3>Can NightKeys see what I type?</h3>
+<p>It needs Input Monitoring only to notice that a key on the built-in keyboard was pressed. It never records, stores or sends what you type, and it makes no network connections.</p>
+<h3>Does it work on Intel Macs?</h3>
+<p>No. It needs a MacBook with Apple silicon and a backlit keyboard.</p>
 <h2>How it works</h2>
 <p>A small background agent listens to the built-in keyboard only, so trackpad events never reach it. It controls the backlight through Apple's private CoreBrightness framework, which is why NightKeys is not on the App Store.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/nightkeys#readme">README</a>.</p>

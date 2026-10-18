@@ -73,6 +73,17 @@
 <pre><code>brew install --cask fratayaydn/tap/capsnow</code></pre>
 <p>Or download <code>CapsNow-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/capsnow/releases/latest">latest release</a>, open it and drag CapsNow to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
 <p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<h2>Questions</h2>
+<h3>Why doesn't Caps Lock turn on when I tap it quickly?</h3>
+<p>macOS ignores a Caps Lock press shorter than 75 milliseconds on purpose, so it doesn't turn on by accident. A quick tap is shorter than that and gets lost.</p>
+<h3>Can I remove the Caps Lock delay without an app?</h3>
+<p>Yes, run <code>hidutil property --set '{"CapsLockDelayOverride":0}'</code> in Terminal. The setting resets at every restart, so you have to run it again. CapsNow sets the same value for you at login and whenever a keyboard is connected.</p>
+<h3>Does CapsNow keep running in the background?</h3>
+<p>No. It applies the setting and quits within two seconds, so it uses no memory or CPU the rest of the time.</p>
+<h3>How do I get the normal delay back?</h3>
+<p>Turn off Enable CapsNow and macOS's own delay is back right away.</p>
+<h3>What happens if I delete it without turning it off?</h3>
+<p>The delay stays off until the next restart. After that macOS's own delay is back, since the setting never survives a restart on its own.</p>
 <h2>How it works</h2>
 <p>It sets the HID property CapsLockDelayOverride to 0 through the public IOHIDEventSystemClient API, the same setting <code>hidutil</code> changes. A login item runs at login and when a keyboard appears, sets it and quits within two seconds.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/capsnow#readme">README</a>.</p>
