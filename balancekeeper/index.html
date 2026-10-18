@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BalanceKeeper: fix Mac audio balance drifting left or right</title>
-<meta name="description" content="Free macOS app that puts your Mac&#x27;s left/right audio balance back when macOS shifts it on its own. Works with speakers, headphones, Bluetooth and USB audio.">
+<meta name="description" content="Your Mac&#x27;s left/right audio balance sometimes moves on its own. BalanceKeeper puts it back the moment it does. Works with speakers, headphones, Bluetooth and USB audio. Free and open source.">
 <link rel="canonical" href="https://fratayaydn.github.io/balancekeeper/">
 <link rel="icon" href="/assets/balancekeeper-icon-64.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="BalanceKeeper: fix Mac audio balance drifting left or right">
-<meta property="og:description" content="Free macOS app that puts your Mac&#x27;s left/right audio balance back when macOS shifts it on its own. Works with speakers, headphones, Bluetooth and USB audio.">
+<meta property="og:description" content="Your Mac&#x27;s left/right audio balance sometimes moves on its own. BalanceKeeper puts it back the moment it does. Works with speakers, headphones, Bluetooth and USB audio. Free and open source.">
 <meta property="og:url" content="https://fratayaydn.github.io/balancekeeper/">
 <meta property="og:image" content="https://fratayaydn.github.io/assets/balancekeeper-icon-64.png">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "BalanceKeeper",
- "description": "Free macOS app that puts your Mac's left/right audio balance back when macOS shifts it on its own. Works with speakers, headphones, Bluetooth and USB audio.",
+ "description": "Your Mac's left/right audio balance sometimes moves on its own. BalanceKeeper puts it back the moment it does. Works with speakers, headphones, Bluetooth and USB audio. Free and open source.",
  "url": "https://fratayaydn.github.io/balancekeeper/",
  "image": "https://fratayaydn.github.io/assets/balancekeeper-icon.png",
  "screenshot": "https://fratayaydn.github.io/assets/balancekeeper-screenshot.webp",
@@ -56,7 +56,7 @@
 </div>
 </section>
 <p>macOS sometimes shifts the left/right audio balance on its own, often after the volume keys are pressed while the Mac is busy. One ear gets quieter and you may not notice for days.</p>
-<p>BalanceKeeper puts the balance back the moment it moves.</p>
+<p>BalanceKeeper puts the balance back the moment it moves. I wanted it to be the lightest fix there is, since it runs all day: it doesn't poll, has no timers and sleeps until macOS reports a change.</p>
 <p>
 <a class="button" href="https://github.com/fratayaydn/balancekeeper/releases/latest">Download</a>
 <a class="button secondary" href="https://github.com/fratayaydn/balancekeeper">Source on GitHub</a>
@@ -65,27 +65,22 @@
 <h2>Features</h2>
 <ul class="features">
 <li>Locks the balance to the center, or to any point you choose</li>
-<li>Works with built-in speakers, headphones, Bluetooth and USB audio devices, and switches with them</li>
-<li>Shows the current output, its balance and how often it had to correct it</li>
-<li>About 3 MB of memory, no polling, no permissions and no network connections</li>
+<li>Works with built-in speakers, headphones, Bluetooth and USB audio, and switches with them</li>
+<li>Shows the current output, its balance and how often it had to fix it</li>
 </ul>
 <h2>Install</h2>
 <pre><code>brew install --cask fratayaydn/tap/balancekeeper</code></pre>
 <p>Or download <code>BalanceKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/balancekeeper/releases/latest">latest release</a>, open it and drag BalanceKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
-<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. No permissions needed, no network connections, no menu bar icon.</p>
 <h2>Questions</h2>
 <h3>Why does my Mac's audio balance change by itself?</h3>
-<p>It's a long-standing macOS bug. The balance can shift when the volume keys are pressed while the Mac is busy, and it stays shifted until you notice.</p>
+<p>It's an old macOS bug. Pressing the volume keys while the Mac is busy can nudge the balance to one side, and it stays there.</p>
 <h3>How do I fix it without an app?</h3>
-<p>Open System Settings &gt; Sound, pick your output and move the Balance slider back to the middle. It can drift again later, which is what BalanceKeeper takes care of.</p>
-<h3>Does it work with AirPods and other Bluetooth headphones?</h3>
-<p>Yes. It works with the built-in speakers, wired headphones, Bluetooth and USB audio devices, and follows you when you switch between them.</p>
+<p>Go to System Settings &gt; Sound, select your output and drag the Balance slider back to the middle. It'll probably drift again at some point, and that's the part BalanceKeeper handles.</p>
 <h3>Can I keep the balance off center on purpose?</h3>
-<p>Yes, you can lock it to any point. While BalanceKeeper is on, change the balance in BalanceKeeper rather than in System Settings, because macOS reports a change made there exactly like a drift.</p>
-<h3>Does it need any permissions?</h3>
-<p>No. It doesn't record audio and makes no network connections.</p>
+<p>Yes, you can lock it anywhere. Just change it in BalanceKeeper while it's on, not in System Settings. macOS reports a change made there the same way as a drift, so BalanceKeeper would move it back.</p>
 <h2>How it works</h2>
-<p>A small background agent asks CoreAudio to report changes to the output device and its balance, and otherwise sleeps. When the balance moves, it sets it back using the method the device supports. It uses only public macOS APIs.</p>
+<p>A small background agent asks CoreAudio to tell it when the output device or its balance changes. When the balance moves, it sets it back with whatever the device supports: the stereo pan, the system's virtual balance, or the volume of the quieter channel. Only public macOS APIs.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/balancekeeper#readme">README</a>.</p>
 </main>
 <footer class="site">

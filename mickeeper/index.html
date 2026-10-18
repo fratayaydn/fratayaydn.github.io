@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MicKeeper: stop AirPods from taking over your Mac&#x27;s microphone</title>
-<meta name="description" content="Free macOS app that switches the input back to your real microphone when AirPods, Bluetooth headphones or an iPhone take it over, so AirPods keep their full sound quality. Can also lock the mic level.">
+<meta name="description" content="When AirPods connect, macOS uses them as the mic too and they drop to call quality. MicKeeper switches back to your real microphone and can lock its level. Free and open source.">
 <link rel="canonical" href="https://fratayaydn.github.io/mickeeper/">
 <link rel="icon" href="/assets/mickeeper-icon-64.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MicKeeper: stop AirPods from taking over your Mac&#x27;s microphone">
-<meta property="og:description" content="Free macOS app that switches the input back to your real microphone when AirPods, Bluetooth headphones or an iPhone take it over, so AirPods keep their full sound quality. Can also lock the mic level.">
+<meta property="og:description" content="When AirPods connect, macOS uses them as the mic too and they drop to call quality. MicKeeper switches back to your real microphone and can lock its level. Free and open source.">
 <meta property="og:url" content="https://fratayaydn.github.io/mickeeper/">
 <meta property="og:image" content="https://fratayaydn.github.io/assets/mickeeper-icon-64.png">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "MicKeeper",
- "description": "Free macOS app that switches the input back to your real microphone when AirPods, Bluetooth headphones or an iPhone take it over, so AirPods keep their full sound quality. Can also lock the mic level.",
+ "description": "When AirPods connect, macOS uses them as the mic too and they drop to call quality. MicKeeper switches back to your real microphone and can lock its level. Free and open source.",
  "url": "https://fratayaydn.github.io/mickeeper/",
  "image": "https://fratayaydn.github.io/assets/mickeeper-icon.png",
  "screenshot": "https://fratayaydn.github.io/assets/mickeeper-screenshot.webp",
@@ -55,8 +55,8 @@
 <p>The right mic, at the right level, and AirPods that never sound like a phone call.</p>
 </div>
 </section>
-<p>When AirPods or other Bluetooth headphones connect to a Mac, macOS makes them the microphone too. As soon as an app uses that microphone (a call, a Meet tab, dictation), the headphones switch to call mode and everything you hear turns mono and muffled. With an iPhone nearby, macOS may switch to its microphone instead.</p>
-<p>MicKeeper switches the microphone back and, if you want, puts the level back too, because apps like Zoom, Teams and Chrome change it on their own.</p>
+<p>When AirPods or other Bluetooth headphones connect to a Mac, macOS makes them the microphone too. As soon as an app uses that microphone (a call, a Meet tab, dictation), the headphones switch to call mode and everything you hear turns mono and muffled. With an iPhone nearby, macOS may switch to its microphone instead. And apps like Zoom, Teams and Chrome change your mic level on their own.</p>
+<p>MicKeeper switches the microphone back and, if you want, puts the level back too.</p>
 <p>
 <a class="button" href="https://github.com/fratayaydn/mickeeper/releases/latest">Download</a>
 <a class="button secondary" href="https://github.com/fratayaydn/mickeeper">Source on GitHub</a>
@@ -64,28 +64,24 @@
 <img class="shot" src="/assets/mickeeper-screenshot.webp" alt="The MicKeeper settings window" width="572" loading="lazy">
 <h2>Features</h2>
 <ul class="features">
-<li>Switches back from AirPods, Bluetooth headphones and iPhone mics to the one you were using, or the built-in one</li>
-<li>Pick one microphone and MicKeeper uses it whenever it is connected</li>
-<li>Optionally locks the microphone level</li>
-<li>About 3 MB of memory, no polling, and no permissions because it never listens to the mic</li>
+<li>Switches back from AirPods, other Bluetooth headphones and iPhones to the mic you were using, or the built-in one</li>
+<li>You can pick one microphone and MicKeeper will use it whenever it's connected</li>
+<li>Can lock the microphone level so apps stop changing it</li>
+<li>About 3 MB of memory and no polling. It sleeps until macOS reports a change</li>
 </ul>
 <h2>Install</h2>
 <pre><code>brew install --cask fratayaydn/tap/mickeeper</code></pre>
 <p>Or download <code>MicKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/mickeeper/releases/latest">latest release</a>, open it and drag MicKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
-<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. No permissions needed, because it never listens to the microphone. It only changes which one is selected.</p>
 <h2>Questions</h2>
-<h3>Why do my AirPods sound bad on my Mac?</h3>
-<p>When an app uses the AirPods microphone (a call, a Meet tab, dictation), they switch to call mode and everything you hear turns mono and muffled. Using another microphone keeps them in full quality.</p>
-<h3>How do I stop my Mac from using AirPods as the microphone?</h3>
-<p>macOS has no setting for it. You can pick another input in System Settings &gt; Sound, but macOS switches to the AirPods again when they connect or go back in your ears. MicKeeper switches back for you each time.</p>
-<h3>Can I still use AirPods as the microphone when I want to?</h3>
-<p>Yes. Pick them in the MicKeeper list and it keeps them as the microphone while they're connected.</p>
+<h3>Why do my AirPods sound so bad on my Mac sometimes?</h3>
+<p>Something is using their microphone. When that happens they switch to call mode, and the sound you hear drops to mono and gets muffled. With another mic selected they stay in full quality.</p>
+<h3>How do I stop my Mac from using AirPods as the mic?</h3>
+<p>There's no setting for it. You can pick a different input in System Settings &gt; Sound, but macOS switches back to the AirPods the next time they connect or go back in your ears. MicKeeper switches it back for you every time.</p>
 <h3>Does it work with Zoom and Teams?</h3>
-<p>Apps set to the system default ("Same as System") follow MicKeeper. If AirPods are picked inside the app itself, the app uses them anyway.</p>
-<h3>Does MicKeeper listen to my microphone?</h3>
-<p>No. It only changes which microphone is selected, and its level if you lock it, so it needs no permissions.</p>
+<p>Yes, as long as the app uses the system default ("Same as System"). If you picked the AirPods inside the app, the app will keep using them.</p>
 <h2>How it works</h2>
-<p>A small background agent asks CoreAudio to report changes to the default input, the device list and the input level, and otherwise sleeps. It uses only public macOS APIs.</p>
+<p>A small background agent asks CoreAudio to tell it when the default input, the list of devices or the input level changes, and otherwise sleeps. Only public macOS APIs.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/mickeeper#readme">README</a>.</p>
 </main>
 <footer class="site">

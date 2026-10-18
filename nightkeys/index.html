@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NightKeys: stop the trackpad from turning on the MacBook keyboard backlight</title>
-<meta name="description" content="Free macOS app that turns on the MacBook keyboard backlight only when you type on the built-in keyboard. The trackpad, mice and external keyboards no longer wake it.">
+<meta name="description" content="Keeps the MacBook keyboard backlight off until you type on the built-in keyboard. The trackpad, a mouse or an external keyboard won&#x27;t wake it anymore. Free and open source.">
 <link rel="canonical" href="https://fratayaydn.github.io/nightkeys/">
 <link rel="icon" href="/assets/nightkeys-icon-64.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NightKeys: stop the trackpad from turning on the MacBook keyboard backlight">
-<meta property="og:description" content="Free macOS app that turns on the MacBook keyboard backlight only when you type on the built-in keyboard. The trackpad, mice and external keyboards no longer wake it.">
+<meta property="og:description" content="Keeps the MacBook keyboard backlight off until you type on the built-in keyboard. The trackpad, a mouse or an external keyboard won&#x27;t wake it anymore. Free and open source.">
 <meta property="og:url" content="https://fratayaydn.github.io/nightkeys/">
 <meta property="og:image" content="https://fratayaydn.github.io/assets/nightkeys-icon-64.png">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "NightKeys",
- "description": "Free macOS app that turns on the MacBook keyboard backlight only when you type on the built-in keyboard. The trackpad, mice and external keyboards no longer wake it.",
+ "description": "Keeps the MacBook keyboard backlight off until you type on the built-in keyboard. The trackpad, a mouse or an external keyboard won't wake it anymore. Free and open source.",
  "url": "https://fratayaydn.github.io/nightkeys/",
  "image": "https://fratayaydn.github.io/assets/nightkeys-icon.png",
  "screenshot": "https://fratayaydn.github.io/assets/nightkeys-screenshot.webp",
@@ -55,7 +55,7 @@
 <p>Only your keys wake the keyboard light.</p>
 </div>
 </section>
-<p>A MacBook lights its keyboard for any input. If you use the trackpad in a dark room, the keys light up every time you scroll or move the pointer, and they stay lit as long as you keep using it. Turning the backlight off doesn't help either, because then it's dark when you do want to type.</p>
+<p>A MacBook lights its keyboard for any input. If you use the trackpad in a dark room, like I do, the keys light up every time you scroll or move the pointer, and they stay lit as long as you keep using it. Turning the backlight off doesn't help either, because then it's dark when you do want to type.</p>
 <p>NightKeys lights the keyboard only when you type on the built-in keyboard. Touching the trackpad, moving a mouse or typing on an external keyboard no longer wakes the light. When you stop typing, it goes off after the timeout set in System Settings &gt; Keyboard.</p>
 <p>
 <a class="button" href="https://github.com/fratayaydn/nightkeys/releases/latest">Download</a>
@@ -64,9 +64,9 @@
 <img class="shot" src="/assets/nightkeys-screenshot.webp" alt="The NightKeys settings window" width="572" loading="lazy">
 <h2>Features</h2>
 <ul class="features">
-<li>Optionally stays off in bright rooms, using the ambient light sensor and a threshold you pick</li>
+<li>Can stay off in bright rooms, using the ambient light sensor and a threshold you pick</li>
 <li>Uses the timeout, low-light mode and brightness from System Settings &gt; Keyboard, so a change in either place shows up in both</li>
-<li>About 3 MB of memory and no CPU while idle; it sleeps until you press a key</li>
+<li>About 3 MB of memory and no CPU while idle. It sleeps until you press a key</li>
 <li>Never records, stores or sends what you type, and makes no network connections</li>
 </ul>
 <h2>Install</h2>
@@ -75,17 +75,15 @@
 <p class="note">A MacBook with a backlit built-in keyboard and Apple silicon, macOS 13 Ventura or later. Needs Input Monitoring, only to notice that a key on the built-in keyboard was pressed.</p>
 <h2>Questions</h2>
 <h3>Why does my MacBook keyboard light turn on when I touch the trackpad?</h3>
-<p>macOS counts any input as activity: the trackpad, a mouse or an external keyboard all wake the keyboard light. There is no setting to choose which input turns it on.</p>
-<h3>Can I fix it in System Settings?</h3>
-<p>Not really. System Settings &gt; Keyboard lets you set how long the light stays on and whether it adjusts in low light, but not what wakes it. Turning the brightness all the way down keeps it off, but then it stays dark when you type too.</p>
-<h3>Does typing on an external keyboard light up the MacBook keyboard?</h3>
-<p>Not with NightKeys. Only the built-in keyboard wakes the light, so typing on an external keyboard leaves it off.</p>
+<p>Because macOS treats any input as activity. The trackpad, a mouse and an external keyboard all wake the keyboard light, and there's no setting to change that.</p>
+<h3>Can't I just fix it in System Settings?</h3>
+<p>Not really. You can set how long the light stays on and whether it reacts to low light, but not what turns it on. You can turn the brightness all the way down, but then it's dark when you type too.</p>
 <h3>Can NightKeys see what I type?</h3>
-<p>It needs Input Monitoring only to notice that a key on the built-in keyboard was pressed. It never records, stores or sends what you type, and it makes no network connections.</p>
+<p>No. Input Monitoring lets it notice that a key was pressed, and that's all it uses it for. Nothing is recorded or sent anywhere.</p>
 <h3>Does it work on Intel Macs?</h3>
-<p>No. It needs a MacBook with Apple silicon and a backlit keyboard.</p>
+<p>No, only on MacBooks with Apple silicon.</p>
 <h2>How it works</h2>
-<p>A small background agent listens to the built-in keyboard only, so trackpad events never reach it. It controls the backlight through Apple's private CoreBrightness framework, which is why NightKeys is not on the App Store.</p>
+<p>A small background agent listens to the built-in keyboard only, so trackpad events never reach it. It controls the backlight through Apple's private CoreBrightness framework. That's also why it isn't on the App Store, and why a future macOS update could break it. If that happens, please open an issue.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/nightkeys#readme">README</a>.</p>
 </main>
 <footer class="site">

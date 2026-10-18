@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CapsNow: remove the Caps Lock delay on Mac</title>
-<meta name="description" content="Free macOS app that turns off the delay macOS adds to Caps Lock, so quick taps register. It applies the setting at login and quits; nothing stays running.">
+<meta name="description" content="macOS ignores quick Caps Lock taps on purpose. CapsNow turns that delay off at login and quits, so nothing stays running. Free and open source.">
 <link rel="canonical" href="https://fratayaydn.github.io/capsnow/">
 <link rel="icon" href="/assets/capsnow-icon-64.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CapsNow: remove the Caps Lock delay on Mac">
-<meta property="og:description" content="Free macOS app that turns off the delay macOS adds to Caps Lock, so quick taps register. It applies the setting at login and quits; nothing stays running.">
+<meta property="og:description" content="macOS ignores quick Caps Lock taps on purpose. CapsNow turns that delay off at login and quits, so nothing stays running. Free and open source.">
 <meta property="og:url" content="https://fratayaydn.github.io/capsnow/">
 <meta property="og:image" content="https://fratayaydn.github.io/assets/capsnow-icon-64.png">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "CapsNow",
- "description": "Free macOS app that turns off the delay macOS adds to Caps Lock, so quick taps register. It applies the setting at login and quits; nothing stays running.",
+ "description": "macOS ignores quick Caps Lock taps on purpose. CapsNow turns that delay off at login and quits, so nothing stays running. Free and open source.",
  "url": "https://fratayaydn.github.io/capsnow/",
  "image": "https://fratayaydn.github.io/assets/capsnow-icon.png",
  "screenshot": "https://fratayaydn.github.io/assets/capsnow-screenshot.webp",
@@ -55,8 +55,8 @@
 <p>Caps Lock without the delay.</p>
 </div>
 </section>
-<p>macOS ignores a Caps Lock press shorter than 75 milliseconds, on purpose, so that Caps Lock does not turn on by accident. The price is that quick taps get lost: you tap Caps Lock, keep typing, and the letters come out in the wrong case.</p>
-<p>macOS already has a setting for this delay. It just isn't in System Settings, and it resets at every restart. CapsNow sets it at login and whenever a keyboard appears, then quits.</p>
+<p>macOS ignores a Caps Lock press shorter than 75 milliseconds, on purpose, so that Caps Lock doesn't turn on by accident. The price is that quick taps get lost: you tap Caps Lock, keep typing, and the letters come out in the wrong case.</p>
+<p>There's actually a setting for this delay. It just isn't in System Settings, and it resets every time you restart. CapsNow sets it at login and whenever a keyboard shows up, then quits.</p>
 <p>
 <a class="button" href="https://github.com/fratayaydn/capsnow/releases/latest">Download</a>
 <a class="button secondary" href="https://github.com/fratayaydn/capsnow">Source on GitHub</a>
@@ -64,28 +64,25 @@
 <img class="shot" src="/assets/capsnow-screenshot.webp" alt="The CapsNow settings window" width="572" loading="lazy">
 <h2>Features</h2>
 <ul class="features">
-<li>Works on every keyboard (built-in, USB and Bluetooth), including ones you connect later</li>
-<li>Turning it off gives macOS its own delay back right away</li>
-<li>Nothing stays running, so it uses no memory and no CPU</li>
-<li>No menu bar icon and no permission to grant</li>
+<li>Works with every keyboard, built-in, USB or Bluetooth, including ones you plug in later</li>
+<li>Nothing keeps running, so it uses no memory and no CPU</li>
+<li>Turn it off and the normal delay is back right away</li>
 </ul>
 <h2>Install</h2>
 <pre><code>brew install --cask fratayaydn/tap/capsnow</code></pre>
 <p>Or download <code>CapsNow-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/capsnow/releases/latest">latest release</a>, open it and drag CapsNow to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
-<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. No permissions to grant, no menu bar icon.</p>
 <h2>Questions</h2>
 <h3>Why doesn't Caps Lock turn on when I tap it quickly?</h3>
-<p>macOS ignores a Caps Lock press shorter than 75 milliseconds on purpose, so it doesn't turn on by accident. A quick tap is shorter than that and gets lost.</p>
-<h3>Can I remove the Caps Lock delay without an app?</h3>
-<p>Yes, run <code>hidutil property --set '{"CapsLockDelayOverride":0}'</code> in Terminal. The setting resets at every restart, so you have to run it again. CapsNow sets the same value for you at login and whenever a keyboard is connected.</p>
-<h3>Does CapsNow keep running in the background?</h3>
-<p>No. It applies the setting and quits within two seconds, so it uses no memory or CPU the rest of the time.</p>
-<h3>How do I get the normal delay back?</h3>
-<p>Turn off Enable CapsNow and macOS's own delay is back right away.</p>
-<h3>What happens if I delete it without turning it off?</h3>
-<p>The delay stays off until the next restart. After that macOS's own delay is back, since the setting never survives a restart on its own.</p>
+<p>macOS ignores presses shorter than 75 ms so Caps Lock doesn't turn on by accident. A quick tap is shorter than that.</p>
+<h3>Can I remove the delay without installing anything?</h3>
+<p>Yes. Run <code>hidutil property --set '{"CapsLockDelayOverride":0}'</code> in Terminal. The catch is that it's gone after a restart, so you'd have to run it every time. CapsNow does that part for you.</p>
+<h3>Does it stay running in the background?</h3>
+<p>No. It sets the value and quits.</p>
+<h3>I deleted it and the delay is still off. Why?</h3>
+<p>If you trash it without turning it off first, the setting stays until the next restart. After that the normal delay is back on its own.</p>
 <h2>How it works</h2>
-<p>It sets the HID property CapsLockDelayOverride to 0 through the public IOHIDEventSystemClient API, the same setting <code>hidutil</code> changes. A login item runs at login and when a keyboard appears, sets it and quits within two seconds.</p>
+<p>It sets the HID property CapsLockDelayOverride to 0 through the public IOHIDEventSystemClient API. That's the same setting <code>hidutil</code> changes. A login item runs at login and when a keyboard is connected, sets it and quits within two seconds.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/capsnow#readme">README</a>.</p>
 </main>
 <footer class="site">
