@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BalanceKeeper: fix Mac audio balance drifting left or right</title>
+<meta name="description" content="Free macOS app that puts your Mac&#x27;s left/right audio balance back when macOS shifts it on its own. Works with speakers, headphones, Bluetooth and USB audio.">
+<link rel="canonical" href="https://fratayaydn.github.io/balancekeeper/">
+<link rel="icon" href="/assets/balancekeeper-icon-64.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BalanceKeeper: fix Mac audio balance drifting left or right">
+<meta property="og:description" content="Free macOS app that puts your Mac&#x27;s left/right audio balance back when macOS shifts it on its own. Works with speakers, headphones, Bluetooth and USB audio.">
+<meta property="og:url" content="https://fratayaydn.github.io/balancekeeper/">
+<meta property="og:image" content="https://fratayaydn.github.io/assets/balancekeeper-icon-64.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><a href="/">Small Mac apps</a></header>
+<main>
+<section class="hero">
+<img src="/assets/balancekeeper-icon.png" alt="BalanceKeeper icon" width="112" height="112">
+<div>
+<h1>BalanceKeeper</h1>
+<p>Keeps your Mac's audio balance centered.</p>
+</div>
+</section>
+<p>macOS sometimes shifts the left/right audio balance on its own, often after the volume keys are pressed while the Mac is busy. One ear gets quieter and you may not notice for days.</p>
+<p>BalanceKeeper puts the balance back the moment it moves.</p>
+<p>
+<a class="button" href="https://github.com/fratayaydn/balancekeeper/releases/latest">Download</a>
+<a class="button secondary" href="https://github.com/fratayaydn/balancekeeper">Source on GitHub</a>
+</p>
+<img class="shot" src="/assets/balancekeeper-screenshot.webp" alt="The BalanceKeeper settings window" width="572" loading="lazy">
+<h2>Features</h2>
+<ul class="features">
+<li>Locks the balance to the center, or to any point you choose</li>
+<li>Works with built-in speakers, headphones, Bluetooth and USB audio devices, and switches with them</li>
+<li>Shows the current output, its balance and how often it had to correct it</li>
+<li>About 3 MB of memory, no polling, no permissions and no network connections</li>
+</ul>
+<h2>Install</h2>
+<pre><code>brew install --cask fratayaydn/tap/balancekeeper</code></pre>
+<p>Or download <code>BalanceKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/balancekeeper/releases/latest">latest release</a>, open it and drag BalanceKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. Needs no permissions.</p>
+<h2>How it works</h2>
+<p>A small background agent asks CoreAudio to report changes to the output device and its balance, and otherwise sleeps. When the balance moves, it sets it back using the method the device supports. It uses only public macOS APIs.</p>
+<p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/balancekeeper#readme">README</a>.</p>
+</main>
+<footer class="site">
+<ul><li><a href="/nightkeys/">NightKeys</a></li><li><a href="/capsnow/">CapsNow</a></li><li><a href="/mickeeper/">MicKeeper</a></li><li><a href="https://github.com/fratayaydn">GitHub</a></li></ul>
+<p>Free and open source, MIT license. Not affiliated with Apple.</p>
+</footer>
+</body>
+</html>

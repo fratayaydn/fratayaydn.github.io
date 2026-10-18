@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NightKeys: MacBook keyboard light only when you type</title>
+<meta name="description" content="Free macOS app that turns on the MacBook keyboard backlight only when you type on the built-in keyboard. The trackpad, mice and external keyboards no longer wake it.">
+<link rel="canonical" href="https://fratayaydn.github.io/nightkeys/">
+<link rel="icon" href="/assets/nightkeys-icon-64.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NightKeys: MacBook keyboard light only when you type">
+<meta property="og:description" content="Free macOS app that turns on the MacBook keyboard backlight only when you type on the built-in keyboard. The trackpad, mice and external keyboards no longer wake it.">
+<meta property="og:url" content="https://fratayaydn.github.io/nightkeys/">
+<meta property="og:image" content="https://fratayaydn.github.io/assets/nightkeys-icon-64.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><a href="/">Small Mac apps</a></header>
+<main>
+<section class="hero">
+<img src="/assets/nightkeys-icon.png" alt="NightKeys icon" width="112" height="112">
+<div>
+<h1>NightKeys</h1>
+<p>Only your keys wake the keyboard light.</p>
+</div>
+</section>
+<p>A MacBook lights its keyboard for any input. If you use the trackpad in a dark room, the keys light up every time you scroll or move the pointer, and they stay lit as long as you keep using it. Turning the backlight off doesn't help either, because then it's dark when you do want to type.</p>
+<p>NightKeys lights the keyboard only when you type on the built-in keyboard. Touching the trackpad, moving a mouse or typing on an external keyboard no longer wakes the light. When you stop typing, it goes off after the timeout set in System Settings &gt; Keyboard.</p>
+<p>
+<a class="button" href="https://github.com/fratayaydn/nightkeys/releases/latest">Download</a>
+<a class="button secondary" href="https://github.com/fratayaydn/nightkeys">Source on GitHub</a>
+</p>
+<img class="shot" src="/assets/nightkeys-screenshot.webp" alt="The NightKeys settings window" width="572" loading="lazy">
+<h2>Features</h2>
+<ul class="features">
+<li>Optionally stays off in bright rooms, using the ambient light sensor and a threshold you pick</li>
+<li>Uses the timeout, low-light mode and brightness from System Settings &gt; Keyboard, so a change in either place shows up in both</li>
+<li>About 3 MB of memory and no CPU while idle; it sleeps until you press a key</li>
+<li>Never records, stores or sends what you type, and makes no network connections</li>
+</ul>
+<h2>Install</h2>
+<pre><code>brew install --cask fratayaydn/tap/nightkeys</code></pre>
+<p>Or download <code>NightKeys-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/nightkeys/releases/latest">latest release</a>, open it and drag NightKeys to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
+<p class="note">A MacBook with a backlit built-in keyboard and Apple silicon, macOS 13 Ventura or later. Needs Input Monitoring, only to notice that a key on the built-in keyboard was pressed.</p>
+<h2>How it works</h2>
+<p>A small background agent listens to the built-in keyboard only, so trackpad events never reach it. It controls the backlight through Apple's private CoreBrightness framework, which is why NightKeys is not on the App Store.</p>
+<p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/nightkeys#readme">README</a>.</p>
+</main>
+<footer class="site">
+<ul><li><a href="/balancekeeper/">BalanceKeeper</a></li><li><a href="/capsnow/">CapsNow</a></li><li><a href="/mickeeper/">MicKeeper</a></li><li><a href="https://github.com/fratayaydn">GitHub</a></li></ul>
+<p>Free and open source, MIT license. Not affiliated with Apple.</p>
+</footer>
+</body>
+</html>
