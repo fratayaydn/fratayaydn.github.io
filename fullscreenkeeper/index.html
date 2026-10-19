@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FullscreenKeeper: reopen Mac apps in full screen after Command-Q</title>
+<meta name="description" content="Quit an app in full screen and it opens as a window next time. FullscreenKeeper remembers which apps you quit in full screen and puts them back. Free and open source.">
+<link rel="canonical" href="https://fratayaydn.github.io/fullscreenkeeper/">
+<link rel="icon" href="/assets/fullscreenkeeper-icon-64.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FullscreenKeeper: reopen Mac apps in full screen after Command-Q">
+<meta property="og:description" content="Quit an app in full screen and it opens as a window next time. FullscreenKeeper remembers which apps you quit in full screen and puts them back. Free and open source.">
+<meta property="og:url" content="https://fratayaydn.github.io/fullscreenkeeper/">
+<meta property="og:image" content="https://fratayaydn.github.io/assets/fullscreenkeeper-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "FullscreenKeeper",
+ "description": "Quit an app in full screen and it opens as a window next time. FullscreenKeeper remembers which apps you quit in full screen and puts them back. Free and open source.",
+ "url": "https://fratayaydn.github.io/fullscreenkeeper/",
+ "image": "https://fratayaydn.github.io/assets/fullscreenkeeper-icon.png",
+ "screenshot": "https://fratayaydn.github.io/assets/fullscreenkeeper-screenshot.webp",
+ "operatingSystem": "macOS 13 or later",
+ "applicationCategory": "UtilitiesApplication",
+ "downloadUrl": "https://github.com/fratayaydn/fullscreenkeeper/releases/latest",
+ "installUrl": "https://github.com/fratayaydn/fullscreenkeeper#install",
+ "isAccessibleForFree": true,
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "license": "https://opensource.org/licenses/MIT",
+ "author": {
+  "@type": "Person",
+  "name": "Fırat Ayaydın",
+  "url": "https://github.com/fratayaydn"
+ },
+ "sameAs": [
+  "https://github.com/fratayaydn/fullscreenkeeper"
+ ]
+}
+</script>
+</head>
+<body>
+<header class="site"><a href="/">Small Mac apps</a></header>
+<main>
+<section class="hero">
+<img src="/assets/fullscreenkeeper-icon.png" alt="FullscreenKeeper icon" width="112" height="112">
+<div>
+<h1>FullscreenKeeper</h1>
+<p>Quit an app in full screen, and it opens in full screen next time.</p>
+</div>
+</section>
+<p>You quit an app with Command-Q while it's in full screen, open it again, and it comes back as a window. macOS only restores full screen for apps that save their window state, and only while "Close windows when quitting an application" is off in Desktop &amp; Dock. Many apps don't, so you click the green button again every time.</p>
+<p>FullscreenKeeper remembers which apps you quit in full screen and puts them back in full screen when they open. If you leave full screen before quitting, the app opens as a window, the way you left it.</p>
+<p>
+<a class="button" href="https://github.com/fratayaydn/fullscreenkeeper/releases/latest">Download</a>
+<a class="button secondary" href="https://github.com/fratayaydn/fullscreenkeeper">Source on GitHub</a>
+</p>
+<img class="shot" src="/assets/fullscreenkeeper-screenshot.webp" alt="The FullscreenKeeper settings window" width="832" loading="lazy">
+<h2>Features</h2>
+<ul class="features">
+<li>Puts an app back into full screen when you reopen it, if you quit it in full screen</li>
+<li>Apps that restore full screen on their own are left alone</li>
+<li>An ignore list for apps it should never touch</li>
+<li>Updates itself, and only installs updates signed by the developer and notarized by Apple</li>
+<li>About 3.4 MB of memory and no polling. Switching desktops or apps doesn't wake it</li>
+</ul>
+<h2>Install</h2>
+<pre><code>brew install --cask fratayaydn/tap/fullscreenkeeper</code></pre>
+<p>Or download <code>FullscreenKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/fullscreenkeeper/releases/latest">latest release</a>, open it and drag FullscreenKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. It needs Accessibility access to see whether a window is in full screen and to put it back. It doesn't read window titles, contents or keystrokes.</p>
+<h2>Questions</h2>
+<h3>Why does my app open as a window after I quit it in full screen?</h3>
+<p>macOS only brings back full screen for apps that save their window state, and only if "Close windows when quitting an application" is off. Plenty of apps don't save it, so they start as a normal window every time.</p>
+<h3>Which apps does it work with?</h3>
+<p>Apps that use the macOS full-screen mode, the one you get from the green button. Games and apps with their own full-screen mode may not work.</p>
+<h3>Does it bring back window size or position?</h3>
+<p>No, only full screen. Split View pairs come back as two separate full-screen apps.</p>
+<h2>How it works</h2>
+<p>A small background agent asks WindowServer to tell it when a full-screen Space is created or closed, and otherwise sleeps. When a remembered app opens, it waits for the window and turns on full screen through Accessibility. The Space notifications are not documented by Apple; if a macOS update removes them, it falls back to a public one.</p>
+<p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/fullscreenkeeper#readme">README</a>.</p>
+</main>
+<footer class="site">
+<ul><li><a href="/nightkeys/">NightKeys</a></li><li><a href="/balancekeeper/">BalanceKeeper</a></li><li><a href="/capsnow/">CapsNow</a></li><li><a href="/mickeeper/">MicKeeper</a></li><li><a href="https://github.com/fratayaydn">GitHub</a></li></ul>
+<p>Free and open source, MIT license. Not affiliated with Apple.</p>
+</footer>
+</body>
+</html>
