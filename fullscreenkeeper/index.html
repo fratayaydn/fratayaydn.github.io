@@ -67,14 +67,15 @@
 <ul class="features">
 <li>Puts an app back into full screen when you reopen it, if you quit it in full screen</li>
 <li>Apps that restore full screen on their own are left alone</li>
-<li>An ignore list for apps it should never touch</li>
+<li>Optional Force fn-F: fn-F switches full screen in every app, even in apps that ignore it or type an "f" instead</li>
+<li>An ignore list for apps that should never come back in full screen</li>
 <li>Updates itself, and only installs updates signed by the developer and notarized by Apple</li>
 <li>About 3.4 MB of memory and no polling. Switching desktops or apps doesn't wake it</li>
 </ul>
 <h2>Install</h2>
 <pre><code>brew install --cask fratayaydn/tap/fullscreenkeeper</code></pre>
 <p>Or download <code>FullscreenKeeper-&lt;version&gt;.dmg</code> from the <a href="https://github.com/fratayaydn/fullscreenkeeper/releases/latest">latest release</a>, open it and drag FullscreenKeeper to Applications. The app is signed with a Developer ID and notarized by Apple.</p>
-<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. It needs Accessibility access to see whether a window is in full screen and to put it back. It doesn't read window titles, contents or keystrokes.</p>
+<p class="note">A Mac with Apple silicon, macOS 13 Ventura or later. It needs Accessibility access to see whether a window is in full screen and to put it back. It doesn't read window titles, contents or keystrokes. Force fn-F uses the same permission and only watches the fn key.</p>
 <h2>Questions</h2>
 <h3>Why does my app open as a window after I quit it in full screen?</h3>
 <p>macOS only brings back full screen for apps that save their window state, and only if "Close windows when quitting an application" is off. Plenty of apps don't save it, so they start as a normal window every time.</p>
@@ -82,8 +83,10 @@
 <p>Apps that use the macOS full-screen mode, the one you get from the green button. Games and apps with their own full-screen mode may not work.</p>
 <h3>Does it bring back window size or position?</h3>
 <p>No, only full screen. Split View pairs come back as two separate full-screen apps.</p>
+<h3>Why does fn-F do nothing in some apps?</h3>
+<p>fn-F only works in apps whose menus include the standard full-screen item. Some apps, like many Chrome-based and Electron apps, build their own menu, so fn-F does nothing there or types an "f". Turn on Force fn-F and it works in all of them. It's off by default.</p>
 <h2>How it works</h2>
-<p>A small background agent asks WindowServer to tell it when a full-screen Space is created or closed, and otherwise sleeps. When a remembered app opens, it waits for the window and turns on full screen through Accessibility. The Space notifications are not documented by Apple; if a macOS update removes them, it falls back to a public one.</p>
+<p>A small background agent asks WindowServer to tell it when a full-screen Space is created or closed, and otherwise sleeps. When a remembered app opens, it waits for the window and turns on full screen through Accessibility. With Force fn-F on, it also watches the fn key, and only while fn is held does it look for F. The Space notifications are not documented by Apple; if a macOS update removes them, it falls back to a public one.</p>
 <p>More details, the build instructions and how to uninstall are in the <a href="https://github.com/fratayaydn/fullscreenkeeper#readme">README</a>.</p>
 </main>
 <footer class="site">
